@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "runtimeVersion": "0.1.0",
+  "entry": "mcp/server.bundle.mjs",
+  "sha256": "d23e40c2b67a7a572df6e4be6b0b9e71f7019cdffb80e87d145359b1af8430dd",
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "1.7.4",
+    "@modelcontextprotocol/sdk": "1.29.0",
+    "zod": "4.4.3"
+  }
+}

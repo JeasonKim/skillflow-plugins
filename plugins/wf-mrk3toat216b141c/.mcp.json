@@ -3,7 +3,7 @@
     "wf-mrk3toat216b141c": {
       "command": "node",
       "args": [
-        "./mcp/start.mjs"
+        "./mcp/server.bundle.mjs"
       ],
       "cwd": "."
     }
