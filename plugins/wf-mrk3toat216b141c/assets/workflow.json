@@ -1,0 +1,34 @@
+{
+  "code": "wf_mrk3toat216b141c",
+  "name": "紫微斗数人生报告",
+  "version": 6,
+  "status": "normal",
+  "summary": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程：先完成出生信息归一化、真太阳时校正与星盘 JSON 生成，再基于星盘数据撰写兼具专业依据与通俗可读性的分析报告，并通过 UTF-8 渲染脚本生成本地 HTML 与长图 PNG。流程不分发 node_modules，节点执行时在各自 Context 内基于 package-lock.json 恢复 npm 依赖，默认使用 npm 镜像源且允许通过 NPM_REGISTRY 覆盖；报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
+  "created_at": "2026-07-14T03:41:20.462Z",
+  "updated_at": "2026-07-14T03:41:20.462Z",
+  "session_id": null,
+  "nodes": [
+    {
+      "code": "chart_generation",
+      "name": "生成星盘",
+      "require_review": false,
+      "workspace_key": "1.1_chart_generation",
+      "mission": "## 职责\n\n本节点负责把用户提供的出生信息归一化，并生成后续报告撰写所需的紫微星盘数据 JSON。\n\n## 输入\n\n- 用户在 task 需求中提供的姓名、性别、出生日期、出生时间、出生地等信息。\n- 本节点 `Context/scripts/gen-chart.mjs` 排盘脚本。\n- 本节点 `Context/` 根目录中的 `package.json` 与 `package-lock.json`。\n\n## 执行要求\n\n// 归一化出生信息\n\n- 解析并校验用户提供的出生信息，至少需要性别、出生日期、出生时间和出生地。\n- 如果用户提供农历日期，应先转换为阳历后再进入排盘。\n- 如果出生时间是模糊时段，应选择该时段中间值作为近似值，并在产出中记录该近似依据。\n\n// 完成真太阳时校正\n\n- 根据出生地经度进行真太阳时校正，使用公式：`真太阳时分钟 = 标准时间分钟 + (当地经度 - 时区基准经度) × 4`。\n- 中国大陆常规出生地默认以东八区、东经 120° 为基准；海外出生地应先明确当地时区，再落到当地真太阳时。\n- 校正后若跨越日期边界，必须同步调整排盘日期。\n- 将校正前时间、出生地经度、校正偏移、校正后时间、最终时辰与 `timeIndex` 写入产出。\n\n// 恢复节点依赖\n\n- 本节点不要求分发 `node_modules/`。\n- 调用排盘脚本前，必须在本节点 `Context/` 内基于 `package-lock.json` 恢复 npm 依赖，默认命令为 `npm ci --ignore-scripts --registry=${NPM_REGISTRY:-https://registry.npmmirror.com}`。\n- 如果运行环境不支持 shell 变量展开，应等价使用 `NPM_REGISTRY` 环境变量的值作为 registry；未设置时使用 `https://registry.npmmirror.com`。\n- 依赖恢复失败时必须输出明确错误，包含失败命令、registry、缺失依赖或退出码；不得伪造星盘数据继续执行。\n\n// 生成星盘数据\n\n- 使用 `Context/scripts/gen-chart.mjs` 生成星盘 JSON。\n- 脚本执行失败时必须输出明确错误，包含失败命令、输入参数摘要和退出码；不得伪造星盘数据继续执行。\n\n## 产出\n\n- 在本节点 `outputs/` 下输出结构化出生信息与校正记录。\n- 在本节点 `outputs/` 下输出星盘数据 JSON，供下游节点读取。\n- 产出中不得包含报告正文，只提供可追溯的排盘输入与排盘结果。",
+      "verification": "## 验收项\n\n- `outputs/` 中存在结构化出生信息文件，包含原始出生信息、归一化后的阳历日期、校正前时间、出生地、经度、真太阳时偏移、校正后时间、最终 `timeIndex`。\n- 依赖恢复日志或执行记录中包含实际使用的 npm registry；默认情况下为 `https://registry.npmmirror.com`，设置 `NPM_REGISTRY` 时为对应覆盖值。\n- `outputs/` 中存在星盘 JSON 文件，且包含 `basicInfo`、`palaces`、`currentDecadal`、`yearlyForecasts` 四类数据。\n- 星盘 JSON 的 `palaces` 数量为 12，`yearlyForecasts` 数量为 3。\n- 若发生依赖恢复或排盘脚本失败，产出或日志中明确记录失败命令与失败原因，且没有生成伪造的星盘 JSON。"
+    },
+    {
+      "code": "report_generation",
+      "name": "生成报告",
+      "require_review": false,
+      "workspace_key": "2.1_report_generation",
+      "mission": "## 职责\n\n本节点负责读取上游星盘数据，撰写兼具专业依据与通俗可读性的紫微人生分析报告，并生成可直接本地访问的 HTML 报告与同样式长图 PNG。\n\n## 输入\n\n- 上游节点输出的结构化出生信息与星盘 JSON。\n- 本节点 `Context/templates/report.html` HTML 模板。\n- 本节点 `Context/scripts/render-report.mjs` UTF-8 HTML 渲染脚本。\n- 本节点 `Context/scripts/html-to-image.mjs` 长图渲染脚本。\n- 本节点 `Context/` 根目录中的 `package.json` 与 `package-lock.json`。\n\n## 写作原则\n\n- 报告应在“大白话”和“专业度”之间取得平衡：读者能看懂，同时能感到判断有明确命盘依据。\n- 可以少量使用必要的紫微斗数概念，例如“命宫”“身宫”“大限”“流年”“四化”等；出现时必须立即转换成现实含义，避免术语堆砌。\n- 不直接堆星曜名称和庙旺陷等专业标签；如引用星盘信息，应说明它支持了什么性格倾向、行动模式、关系课题或阶段重点。\n- 每个重要判断都应尽量包含“依据 → 解释 → 现实建议”三层，而不是只给抽象形容词。\n- 使用概率性、建设性语气，避免“必定”“注定”“大凶”等绝对化表达。\n- 不编造具体事件、具体月份或不可验证的人生情节，只分析趋势、基调、课题和建议。\n- 避免鸡汤式表达、空泛鼓励和含糊其辞的套话；建议要能落到行动、选择、关系处理或自我管理上。\n- 报告主体包含人生主基调、当前十年阶段、近三年年度趋势三部分。\n\n## 执行要求\n\n// 基于星盘数据撰写报告\n\n- 以星盘 JSON 作为唯一排盘数据源，不凭空补造星曜、宫位或流年信息。\n- 将人生主基调、当前十年阶段、近三年年度趋势写入结构化 `report-content.json`，字段名应对应模板占位符，例如 `LIFE_THEME_HTML`、`DECADAL_HTML`、`YEARLY_1_HTML`。\n- `report-content.json` 必须以 UTF-8 编码写入，禁止使用 Windows 默认编码、`echo`、shell 重定向或未显式指定编码的 `Set-Content` 写入中文正文。\n- 正文应适合放入 HTML 段落，保持有分析感的散文式表达；可以有清晰判断和具体建议，但避免清单化堆砌。\n- 写作时应显式区分长期性格底色、当前阶段主题和年度节奏，不把所有内容写成通用人生建议。\n\n// 恢复节点依赖\n\n- 本节点不要求分发 `node_modules/`。\n- 调用渲染脚本前，必须在本节点 `Context/` 内基于 `package-lock.json` 恢复 npm 依赖，默认命令为 `npm ci --ignore-scripts --registry=${NPM_REGISTRY:-https://registry.npmmirror.com}`。\n- 如果运行环境不支持 shell 变量展开，应等价使用 `NPM_REGISTRY` 环境变量的值作为 registry；未设置时使用 `https://registry.npmmirror.com`。\n- 依赖恢复失败时必须输出明确错误，包含失败命令、registry、缺失依赖或退出码；不得继续执行 HTML/PNG 渲染。\n\n// 生成本地交付物\n\n- 必须使用 `Context/scripts/render-report.mjs` 读取 `Context/templates/report.html` 与 `report-content.json`，生成最终 HTML 文件。\n- `render-report.mjs` 会按 UTF-8 读取模板与内容，并按 UTF-8 写入 HTML；不得用手工字符串拼接、shell 重定向或默认编码命令绕过该脚本。\n- 使用 `Context/scripts/html-to-image.mjs` 将刚生成的 HTML 渲染为 PNG 长图，保证 HTML 与 PNG 使用同一时间戳前缀。\n- PNG 渲染因浏览器缺失失败时，不得影响 HTML 交付；需要在产出中明确记录缺失浏览器及恢复建议。\n- HTML 生成后应直接打开本地文件，便于用户访问。\n\n## 产出\n\n- 在本节点 `outputs/` 下输出 UTF-8 编码的 `report-content.json`。\n- 在本节点 `outputs/` 下输出由 `render-report.mjs` 生成的 HTML 报告文件。\n- 在本节点 `outputs/` 下输出 PNG 长图；若无法生成，输出明确失败说明。\n- 在最终汇报中只提供一句话概括、HTML 路径、PNG 路径或失败原因，不复述报告正文。",
+      "verification": "## 验收项\n\n- `outputs/` 中存在 UTF-8 编码的 `report-content.json`，且覆盖人生主基调、当前十年阶段、近三年年度趋势三部分。\n- 依赖恢复日志或执行记录中包含实际使用的 npm registry；默认情况下为 `https://registry.npmmirror.com`，设置 `NPM_REGISTRY` 时为对应覆盖值。\n- HTML 报告文件由 `Context/scripts/render-report.mjs` 生成，并且已使用上游星盘 JSON 中的基础信息、当前阶段和三年流年数据。\n- HTML 报告文件以 UTF-8 读取时中文正文正常显示，不存在由编码替换产生的连续 `????`。\n- 报告中的关键判断能够追溯到星盘 JSON 中的宫位、阶段或流年数据，且没有凭空补造星曜、宫位或年份信息。\n- 报告可以少量使用必要紫微概念，但每处专业概念都已转译成现实含义，没有连续堆砌术语或庙旺陷等难读标签。\n- 报告不包含绝对化宿命表达、具体事件预测、空泛鸡汤式鼓励或无法落地的套话。\n- PNG 长图存在且由同一 HTML 文件渲染生成；若 PNG 不存在，产出中明确记录浏览器缺失或渲染失败原因。\n- HTML 与 PNG 文件名使用同一时间戳前缀。\n- 节点执行结束后已尝试打开 HTML 本地文件，最终汇报包含 HTML 路径与 PNG 路径或 PNG 失败原因。"
+    }
+  ],
+  "edges": [
+    {
+      "source": "chart_generation",
+      "target": "report_generation"
+    }
+  ]
+}

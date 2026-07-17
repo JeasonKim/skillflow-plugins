@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE: 紫微斗数 AI 分析报告
+  =============================================================
+  占位符清单（生成报告时，把下列所有 {{XXX}} 替换成真实内容，
+  然后删除这整段注释块再写入最终文件）:
+
+  · {{META_NAME}}          用户姓名。若用户未提供，替换为空字符串（不加"先生/女士"字样）
+  · {{META_GENDER}}        性别（"男" | "女"）
+  · {{META_SOLAR_DATE}}    阳历生日，格式"1995 年 3 月 12 日"
+  · {{META_LUNAR_DATE}}    农历生日，格式"乙亥年 二月十二"
+  · {{META_CHINESE_DATE}}  八字四柱，格式"乙亥 己卯 己酉 丙寅"
+  · {{META_TIME}}          时辰，格式"寅时 03:00–05:00"
+  · {{META_BIRTHPLACE}}    出生地（城市）
+  · {{META_TRUE_SOLAR_NOTE}} 真太阳时校正备注。示例：
+                           "北京时间 05:30，按经度 -130 分钟校正，真太阳时 03:20，落寅时"
+                           若无需校正，填"北京时间 = 真太阳时"
+  · {{META_ZODIAC}}        生肖
+  · {{META_SIGN}}          星座
+  · {{META_GENERATED_AT}}  生成时间，"2026 年 4 月 13 日"
+
+  · {{LIFE_THEME_HTML}}    人生主基调正文。必须是合法的 HTML 片段，包含多个 <p>。
+                           500–800 字，白话散文风，不含紫微术语。
+                           示例：
+                             <p>你的骨子里藏着一种……</p>
+                             <p>关于感情，你……</p>
+
+  · {{DECADAL_RANGE}}      当前大限年龄段，"26 – 35 岁"
+  · {{DECADAL_THEME}}      当前大限一句话主题，"厚积薄发的十年"
+  · {{DECADAL_HTML}}       当前大限分析正文，300–500 字，多段 <p>
+
+  · {{YEARLY_1_YEAR}} / {{YEARLY_1_AGE}} / {{YEARLY_1_HEADLINE}} / {{YEARLY_1_HTML}}
+  · {{YEARLY_2_YEAR}} / {{YEARLY_2_AGE}} / {{YEARLY_2_HEADLINE}} / {{YEARLY_2_HTML}}
+  · {{YEARLY_3_YEAR}} / {{YEARLY_3_AGE}} / {{YEARLY_3_HEADLINE}} / {{YEARLY_3_HTML}}
+     · YEAR:     年份，"2026"
+     · AGE:      虚岁，"虚岁 32"
+     · HEADLINE: 一句话主题，"转折与沉淀并行"
+     · HTML:     分析正文，200–300 字，多段 <p>
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>紫微星盘 · 人生叙事</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAF7F0;
+      --card: #FFFFFF;
+      --ink: #1A1613;
+      --ink-soft: #46423C;
+      --ink-mute: #746E68;
+      --accent: #A94E3F;
+      --accent-soft: #C97A6A;
+      --line: #E8DFC9;
+      --line-strong: #D6C8A4;
+      --shadow: 0 4px 28px rgba(26, 22, 19, 0.09);
+      --radius: 16px;
+      --body-font: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+      --display-font: 'ZCOOL XiaoWei', 'Noto Serif SC', 'STSong', serif;
+      --seal-font: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body-font);
+      font-size: 18px;
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(169, 78, 63, 0.03) 0, transparent 40%),
+        radial-gradient(circle at 90% 90%, rgba(169, 78, 63, 0.03) 0, transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 32px 100px;
+      z-index: 1;
+    }
+
+    /* ———————— 顶部印章标题 ———————— */
+    .hero {
+      text-align: center;
+      padding-bottom: 52px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 52px;
+    }
+
+    .seal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 112px;
+      height: 112px;
+      background: var(--accent);
+      color: #FFF;
+      font-family: var(--seal-font);
+      font-size: 40px;
+      letter-spacing: 5px;
+      line-height: 1;
+      border-radius: 8px;
+      box-shadow: 0 3px 16px rgba(169, 78, 63, 0.28);
+      transform: rotate(-2deg);
+      margin-bottom: 32px;
+    }
+
+    .seal span {
+      display: block;
+      padding-left: 4px;
+    }
+
+    .hero h1 {
+      font-family: var(--display-font);
+      font-size: 58px;
+      font-weight: 400;
+      margin: 0 0 10px;
+      letter-spacing: 10px;
+      color: var(--ink);
+    }
+
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--ink-soft);
+      letter-spacing: 3px;
+      margin: 0;
+    }
+
+    /* ———————— 基本信息卡片 ———————— */
+    .meta {
+      margin-top: 40px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      box-shadow: var(--shadow);
+      text-align: left;
+    }
+
+    .meta .name-row {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed var(--line);
+    }
+
+    .meta .name-row .name {
+      font-family: var(--display-font);
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 3px;
+    }
+
+    .meta .name-row .name:empty {
+      display: none;
+    }
+
+    .meta .name-row .gender {
+      font-size: 18px;
+      color: var(--ink-soft);
+      padding: 4px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+    }
+
+    .meta dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px 24px;
+      margin: 0;
+      font-size: 19px;
+    }
+
+    .meta dt {
+      color: var(--ink-mute);
+      font-weight: 400;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .meta dd {
+      margin: 0;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .meta .solar-note {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px dashed var(--line);
+      font-size: 16px;
+      color: var(--ink-mute);
+      line-height: 1.85;
+      font-style: italic;
+    }
+
+    /* ———————— 节标题 ———————— */
+    section {
+      margin-top: 72px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .section-title .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      color: var(--line-strong);
+    }
+
+    .section-title .ornament::before,
+    .section-title .ornament::after {
+      content: '';
+      width: 72px;
+      height: 1px;
+      background: var(--line-strong);
+    }
+
+    .section-title .ornament::before { background: linear-gradient(to right, transparent, var(--line-strong)); }
+    .section-title .ornament::after { background: linear-gradient(to left, transparent, var(--line-strong)); }
+
+    .section-title .ornament svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+    }
+
+    .section-title h2 {
+      font-family: var(--display-font);
+      font-size: 42px;
+      font-weight: 400;
+      margin: 16px 0 8px;
+      letter-spacing: 10px;
+      color: var(--ink);
+    }
+
+    .section-title .section-sub {
+      font-size: 18px;
+      color: var(--ink-mute);
+      letter-spacing: 4px;
+      margin: 0;
+    }
+
+    /* ———————— 内容区块 ———————— */
+    .content {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 48px 52px;
+      box-shadow: var(--shadow);
+    }
+
+    .content p {
+      margin: 0 0 24px;
+      text-indent: 2em;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.9;
+    }
+
+    .content p:last-child { margin-bottom: 0; }
+
+    .content strong, .content b {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ———————— 大限卡片特殊样式 ———————— */
+    .decadal-card .headline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 24px 32px;
+      margin: -48px -52px 36px;
+      background: linear-gradient(135deg, #B15A4A 0%, #A94E3F 100%);
+      color: #FFF;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .decadal-card .headline .range {
+      font-family: var(--display-font);
+      font-size: 30px;
+      letter-spacing: 4px;
+    }
+
+    .decadal-card .headline .theme {
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.92);
+      font-style: italic;
+      letter-spacing: 2px;
+    }
+
+    /* ———————— 流年卡片 ———————— */
+    .yearly-list {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .yearly-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .yearly-card .yearly-header {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 26px 36px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(to right, rgba(169, 78, 63, 0.04), transparent);
+    }
+
+    .yearly-card .year {
+      font-family: var(--display-font);
+      font-size: 46px;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: 3px;
+    }
+
+    .yearly-card .age {
+      font-size: 17px;
+      color: var(--ink-mute);
+      padding: 4px 14px;
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+    }
+
+    .yearly-card .headline-text {
+      margin-left: auto;
+      font-family: var(--display-font);
+      font-size: 22px;
+      color: var(--ink-soft);
+      font-style: italic;
+      text-align: right;
+      letter-spacing: 2px;
+    }
+
+    .yearly-card .yearly-body {
+      padding: 32px 36px;
+    }
+
+    .yearly-card .yearly-body p {
+      margin: 0 0 18px;
+      text-indent: 2em;
+      line-height: 1.9;
+      font-size: 21px;
+    }
+
+    .yearly-card .yearly-body p:last-child { margin-bottom: 0; }
+
+    /* ———————— 页脚 ———————— */
+    footer {
+      margin-top: 84px;
+      padding-top: 36px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+      font-size: 16px;
+      color: var(--ink-mute);
+      line-height: 1.9;
+    }
+
+    footer p { margin: 6px 0; }
+
+    footer .disclaimer {
+      max-width: 560px;
+      margin: 0 auto 14px;
+      font-style: italic;
+    }
+
+    /* ———————— 响应式 ———————— */
+    @media (max-width: 640px) {
+      .page { padding: 56px 22px 72px; }
+      .hero h1 { font-size: 40px; letter-spacing: 6px; }
+      .section-title h2 { font-size: 30px; letter-spacing: 6px; }
+      .content { padding: 32px 26px; }
+      .content p { font-size: 19px; line-height: 1.95; }
+      .decadal-card .headline {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin: -32px -26px 28px;
+        padding: 22px 26px;
+      }
+      .yearly-card .yearly-header {
+        flex-wrap: wrap;
+        padding: 22px 24px;
+      }
+      .yearly-card .headline-text { margin-left: 0; width: 100%; text-align: left; }
+      .yearly-card .yearly-body { padding: 26px 24px; }
+      .yearly-card .yearly-body p { font-size: 18px; }
+      .meta { padding: 24px 22px; }
+      .meta dl { grid-template-columns: 1fr; gap: 8px; font-size: 17px; }
+      .meta dt::after { content: ':'; }
+      .meta .name-row .name { font-size: 26px; }
+    }
+
+    /* ———————— 手动打印（Cmd+P）兜底样式 ———————— */
+    @media print {
+      body { background: #FFF; }
+      .page { padding: 24px; max-width: none; }
+      .content, .yearly-card, .meta { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ═══ 顶部 ═══ -->
+    <header class="hero">
+      <div class="seal"><span>紫微</span></div>
+      <h1>人生叙事</h1>
+      <p class="subtitle">A M I · 紫 微 斗 数 · 人 生 解 读</p>
+
+      <div class="meta">
+        <div class="name-row">
+          <div class="name">{{META_NAME}}</div>
+          <div class="gender">{{META_GENDER}}</div>
+        </div>
+        <dl>
+          <dt>阳历</dt><dd>{{META_SOLAR_DATE}}</dd>
+          <dt>农历</dt><dd>{{META_LUNAR_DATE}}</dd>
+          <dt>八字</dt><dd>{{META_CHINESE_DATE}}</dd>
+          <dt>时辰</dt><dd>{{META_TIME}}</dd>
+          <dt>出生地</dt><dd>{{META_BIRTHPLACE}}</dd>
+          <dt>生肖</dt><dd>{{META_ZODIAC}}</dd>
+          <dt>星座</dt><dd>{{META_SIGN}}</dd>
+        </dl>
+        <div class="solar-note">※ {{META_TRUE_SOLAR_NOTE}}</div>
+      </div>
+    </header>
+
+    <!-- ═══ 人生主基调 ═══ -->
+    <section>
+      <div class="section-title">
+        <div class="ornament">
+          <svg viewBox="0 0 16 16"><path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z"/></svg>
+        </div>
+        <h2>人 生 主 基 调</h2>
+        <p class="section-sub">你骨子里的模样</p>
+      </div>
+      <div class="content">
+        {{LIFE_THEME_HTML}}
+      </div>
+    </section>
+
+    <!-- ═══ 当前大限 ═══ -->
+    <section>
+      <div class="section-title">
+        <div class="ornament">
+          <svg viewBox="0 0 16 16"><path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z"/></svg>
+        </div>
+        <h2>当 下 十 年</h2>
+        <p class="section-sub">此刻所在的人生阶段</p>
+      </div>
+      <div class="content decadal-card">
+        <div class="headline">
+          <div class="range">{{DECADAL_RANGE}}</div>
+          <div class="theme">{{DECADAL_THEME}}</div>
+        </div>
+        {{DECADAL_HTML}}
+      </div>
+    </section>
+
+    <!-- ═══ 近三年流年 ═══ -->
+    <section>
+      <div class="section-title">
+        <div class="ornament">
+          <svg viewBox="0 0 16 16"><path d="M8 0 L10 6 L16 8 L10 10 L8 16 L6 10 L0 8 L6 6 Z"/></svg>
+        </div>
+        <h2>近 三 年</h2>
+        <p class="section-sub">年度风景</p>
+      </div>
+      <div class="yearly-list">
+        <article class="yearly-card">
+          <div class="yearly-header">
+            <div class="year">{{YEARLY_1_YEAR}}</div>
+            <div class="age">{{YEARLY_1_AGE}}</div>
+            <div class="headline-text">{{YEARLY_1_HEADLINE}}</div>
+          </div>
+          <div class="yearly-body">
+            {{YEARLY_1_HTML}}
+          </div>
+        </article>
+        <article class="yearly-card">
+          <div class="yearly-header">
+            <div class="year">{{YEARLY_2_YEAR}}</div>
+            <div class="age">{{YEARLY_2_AGE}}</div>
+            <div class="headline-text">{{YEARLY_2_HEADLINE}}</div>
+          </div>
+          <div class="yearly-body">
+            {{YEARLY_2_HTML}}
+          </div>
+        </article>
+        <article class="yearly-card">
+          <div class="yearly-header">
+            <div class="year">{{YEARLY_3_YEAR}}</div>
+            <div class="age">{{YEARLY_3_AGE}}</div>
+            <div class="headline-text">{{YEARLY_3_HEADLINE}}</div>
+          </div>
+          <div class="yearly-body">
+            {{YEARLY_3_HTML}}
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══ 页脚 ═══ -->
+    <footer>
+      <p class="disclaimer">本报告基于紫微斗数传统推算与 AI 语义分析生成，内容为启发性参考，非宿命论断。人生的答案始终在自己手中。</p>
+      <p>Generated on {{META_GENERATED_AT}}</p>
+    </footer>
+
+  </div>
+</body>
+</html>

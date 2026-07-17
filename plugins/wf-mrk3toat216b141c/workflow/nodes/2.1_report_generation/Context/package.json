@@ -1,0 +1,14 @@
+{
+  "name": "ziwei-skill",
+  "version": "0.1.0",
+  "description": "Claude Code skill for 紫微斗数 star chart analysis — generate a polished HTML report from birth info",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "gen": "node scripts/gen-chart.mjs"
+  },
+  "dependencies": {
+    "iztro": "^2.5.8",
+    "puppeteer-core": "^23.0.0"
+  }
+}
