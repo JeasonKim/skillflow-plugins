@@ -17,6 +17,8 @@
 
 Codex 会添加或更新这个插件市场，再安装指定插件。插件更新后，重新发送同样的请求即可刷新插件市场并安装最新版本。
 
+首次安装后开启新对话，以便加载插件；已有插件升级后，需要完整退出并重新启动 Codex Desktop，再开启新对话。
+
 ## 给 Codex 的安装指引
 
 当用户提供这个仓库地址并请求安装插件时，请将仓库根目录作为 Codex 插件市场，并按照以下步骤操作：
@@ -42,7 +44,9 @@ Codex 会添加或更新这个插件市场，再安装指定插件。插件更�
    codex plugin list
    ```
 
-6. 安装完成后，告知用户新建一个 Codex 任务，以便加载新插件。
+6. 安装完成后，根据此次操作告知用户如何加载插件：
+   - 首次安装后开启新对话。
+   - 已有插件升级后，完整退出并重新启动 Codex Desktop，再开启新对话。
 
 - GitHub 仓库：[`JeasonKim/skillflow-plugins`](https://github.com/JeasonKim/skillflow-plugins)
 - 插件市场标识：`jeasonkim-plugins`

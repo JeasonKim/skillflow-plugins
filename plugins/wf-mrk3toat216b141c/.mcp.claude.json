@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "wf-mrk3toat216b141c": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/server.bundle.mjs"
+      ],
+      "env": {
+        "SKILLFLOW_PLUGIN_DATA_ROOT": "${CLAUDE_PLUGIN_DATA}",
+        "SKILLFLOW_PLUGIN_HOST": "claude-code"
+      }
+    }
+  }
+}

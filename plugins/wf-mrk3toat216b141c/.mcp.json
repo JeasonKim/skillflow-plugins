@@ -5,7 +5,10 @@
       "args": [
         "./mcp/server.bundle.mjs"
       ],
-      "cwd": "."
+      "cwd": ".",
+      "env": {
+        "SKILLFLOW_PLUGIN_HOST": "codex"
+      }
     }
   }
 }
