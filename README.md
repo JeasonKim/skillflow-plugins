@@ -1,63 +1,52 @@
 <!-- 此文件由 SkillFlow 自动生成，请勿手动修改。 -->
-# JeasonKim 的 Codex 插件市场
+# JeasonKim 的 Skill Flow Agent 插件仓库
 
-这是一个由 SkillFlow 自动生成并维护的 Codex 插件市场仓库。插件市场目录位于 [`.agents/plugins/marketplace.json`](./.agents/plugins/marketplace.json)，所有可安装的插件都位于 [`plugins/`](./plugins/)目录。
+这是一个由 SkillFlow 自动生成并维护的 Agent 插件仓库。同一个 GitHub 仓库按平台维护独立的插件市场清单，插件主体统一放在 [`plugins/`](./plugins/) 目录中。
 
 ## 可用插件
 
-| 插件 | 插件目录 | 安装命令 | 授权方式 |
-| --- | --- | --- | --- |
-| [`wf-mrk3toat216b141c`](./plugins/wf-mrk3toat216b141c) | `./plugins/wf-mrk3toat216b141c` | `codex plugin add wf-mrk3toat216b141c@jeasonkim-plugins` | 安装时完成授权 |
+| 插件 | 支持平台 |
+| --- | --- |
+| [`wf-mrk3toat216b141c`](./plugins/wf-mrk3toat216b141c) | Codex、Claude Code |
 
-## 安装方法
+## Codex 安装方法
 
 把下面的文字发给 Codex，并将插件名替换为上表中需要安装的插件：
 
 > 请从 https://github.com/JeasonKim/skillflow-plugins 安装 `wf-mrk3toat216b141c` Codex 插件。
 
-Codex 会添加或更新这个插件市场，再安装指定插件。插件更新后，重新发送同样的请求即可刷新插件市场并安装最新版本。
+也可以直接运行：
 
-首次安装后开启新对话，以便加载插件；已有插件升级后，需要完整退出并重新启动 Codex Desktop，再开启新对话。
+```bash
+codex plugin marketplace add JeasonKim/skillflow-plugins --ref main
+codex plugin add wf-mrk3toat216b141c@jeasonkim-plugins
+codex plugin list
+```
 
-## 给 Codex 的安装指引
+首次安装后开启新对话；已有插件升级后，完整退出并重新启动 Codex Desktop，再开启新对话。
 
-当用户提供这个仓库地址并请求安装插件时，请将仓库根目录作为 Codex 插件市场，并按照以下步骤操作：
+## Claude Code 安装方法
 
-1. 从上方的“可用插件”中确认用户指定的插件。除非用户明确要求安装全部插件，否则不要批量安装。
-2. 运行 `codex plugin marketplace list`，检查插件市场 `jeasonkim-plugins` 是否已经添加。
-3. 如果尚未添加，运行：
+```bash
+claude plugin marketplace add JeasonKim/skillflow-plugins@main
+claude plugin install wf-mrk3toat216b141c@jeasonkim-plugins
+claude plugin list
+```
 
-   ```bash
-   codex plugin marketplace add JeasonKim/skillflow-plugins --ref main
-   ```
+仓库更新后运行 `claude plugin marketplace update jeasonkim-plugins`，再更新对应插件。
 
-4. 如果已经添加，先运行以下命令刷新插件市场：
-
-   ```bash
-   codex plugin marketplace upgrade jeasonkim-plugins
-   ```
-
-5. 使用表格中的完整插件标识安装用户指定的插件，然后校验安装结果：
-
-   ```bash
-   codex plugin add <plugin-name>@jeasonkim-plugins
-   codex plugin list
-   ```
-
-6. 安装完成后，根据此次操作告知用户如何加载插件：
-   - 首次安装后开启新对话。
-   - 已有插件升级后，完整退出并重新启动 Codex Desktop，再开启新对话。
+## 仓库信息
 
 - GitHub 仓库：[`JeasonKim/skillflow-plugins`](https://github.com/JeasonKim/skillflow-plugins)
-- 插件市场标识：`jeasonkim-plugins`
 - 默认分支：`main`
 
 ## 仓库结构
 
 ```text
-.agents/plugins/marketplace.json  # Codex 插件市场目录
-plugins/<plugin-name>/            # 可安装的插件包
-README.md                         # 自动生成的安装说明和插件索引
+.agents/plugins/marketplace.json   # Codex 插件市场目录
+.claude-plugin/marketplace.json    # Claude Code 插件市场目录
+plugins/<plugin-name>/             # 各平台共用的 Skill Flow 插件分包
+README.md                          # 自动生成的安装说明和插件索引
 ```
 
-每次通过 SkillFlow 发布插件时，都会根据插件市场目录重新生成本文件。
+每次通过 SkillFlow 发布任一 Agent 平台插件时，都会根据仓库内各平台的插件市场清单重新生成本文件。

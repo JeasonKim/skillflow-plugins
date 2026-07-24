@@ -1,5 +1,5 @@
 {
-  "name": "wf-mrk3toat216b141c",
+  "name": "jeasonkim-plugins",
   "owner": {
     "name": "老徐说AI"
   },
@@ -8,7 +8,7 @@
     {
       "name": "wf-mrk3toat216b141c",
       "source": "./plugins/wf-mrk3toat216b141c",
-      "description": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程：先完成出生信息归一化、真太阳时校正与星盘 JSON 生成，再基于星盘数据撰写兼具专业依据与通俗可读性的分析报告，并通过 UTF-8 渲染脚本生成本地 HTML 与长图 PNG。流程不分发 node_modules，节点执行时在各自 Context 内基于 package-lock.json 恢复 npm 依赖，默认使用 npm 镜像源且允许通过 NPM_REGISTRY 覆盖；报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
+      "description": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程，报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
       "author": {
         "name": "老徐说AI"
       },

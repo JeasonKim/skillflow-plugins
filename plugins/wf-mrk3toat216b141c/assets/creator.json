@@ -1,8 +1,7 @@
 {
-  "userId": "50744786411324495",
+  "userId": "1",
   "displayName": "老徐说AI",
-  "avatarOssFileKey": "creator-profile-assets/user-50744786411324495/avatar/20260722083153109-73331168967132160-9f23e370b3f1.webp",
-  "avatarUrl": "https://oss.penstairs.com/creator-profile-assets/user-50744786411324495/avatar/20260722083153109-73331168967132160-9f23e370b3f1.webp",
+  "avatarUrl": "https://oss.penstairs.com/creator-profile-assets/user-1/avatar/20260724071841823-74037526314091520-0ae50140bfb3.webp",
   "bio": "致力于把AI真实落地，不讲AI故事。已服务30+博主及MCN机构。（持续增长ing）",
   "links": [
     {
@@ -21,5 +20,5 @@
       "label": "官网"
     }
   ],
-  "revision": 1
+  "updatedAt": "2026-07-24T08:20:28.000Z"
 }
