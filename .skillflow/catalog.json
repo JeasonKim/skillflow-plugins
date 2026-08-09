@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "generatedBy": {
+    "name": "Skill Flow",
+    "format": "cross-platform-agent-plugin-repository"
+  },
+  "plugins": [
+    {
+      "technicalName": "wf-mrk3toat216b141c",
+      "repositoryPath": "plugins/wf-mrk3toat216b141c",
+      "version": "1.1.0",
+      "displayName": {
+        "zh": "紫微斗数人生报告",
+        "en": "Zi Wei Life Report"
+      },
+      "description": {
+        "zh": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程，报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
+        "en": "Creates a practical Zi Wei life report from normalized birth data, solar-time correction, chart generation, and clear narrative analysis."
+      },
+      "author": {
+        "name": "老徐说AI"
+      },
+      "categoryId": "12-IndustryConsultant",
+      "tags": [
+        {
+          "zh": "紫微斗数",
+          "en": "Zi Wei Astrology"
+        },
+        {
+          "zh": "人生解读",
+          "en": "Life Reading"
+        },
+        {
+          "zh": "报告生成",
+          "en": "Report Generation"
+        }
+      ],
+      "quickPrompts": [
+        {
+          "zh": "根据我的出生信息生成一份紫微斗数人生报告",
+          "en": "Create a Zi Wei life report from my birth details."
+        },
+        {
+          "zh": "先帮我校正真太阳时并生成星盘",
+          "en": "Correct my solar time and generate the birth chart first."
+        },
+        {
+          "zh": "生成适合分享的 HTML 报告和长图",
+          "en": "Generate a shareable HTML report and long image."
+        }
+      ]
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "runtimeVersion": "0.1.0",
   "entry": "mcp/server.bundle.mjs",
-  "sha256": "287d36ffc643a736cc092d54f4bc41f57b1911cfa540e98b9b39508ed83d83ed",
+  "sha256": "e9faab00aed82bbc04f4b1da0182877640b6a3d13397e7553ed8d33d9b4d034b",
   "dependencies": {
     "@modelcontextprotocol/ext-apps": "1.7.4",
     "@modelcontextprotocol/sdk": "1.29.0",

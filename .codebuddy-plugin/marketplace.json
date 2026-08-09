@@ -1,0 +1,23 @@
+{
+  "name": "jeasonkim-plugins",
+  "description": "JeasonKim 发布的 Skill Flow Agent 专家仓库",
+  "owner": {
+    "name": "JeasonKim"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "generatedBy": "Skill Flow"
+  },
+  "plugins": [
+    {
+      "name": "wf-mrk3toat216b141c",
+      "description": "Creates a practical Zi Wei life report from normalized birth data, solar-time correction, chart generation, and clear narrative analysis.",
+      "source": "./plugins/wf-mrk3toat216b141c",
+      "version": "1.1.0",
+      "author": {
+        "name": "老徐说AI"
+      },
+      "category": "12-IndustryConsultant"
+    }
+  ]
+}

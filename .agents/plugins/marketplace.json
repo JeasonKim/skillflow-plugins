@@ -1,7 +1,7 @@
 {
   "name": "jeasonkim-plugins",
   "interface": {
-    "displayName": "JeasonKim Plugins"
+    "displayName": "JeasonKim Skill Flow Plugins"
   },
   "plugins": [
     {

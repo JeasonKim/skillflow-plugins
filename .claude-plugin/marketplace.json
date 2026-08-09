@@ -1,9 +1,9 @@
 {
   "name": "jeasonkim-plugins",
   "owner": {
-    "name": "老徐说AI"
+    "name": "JeasonKim"
   },
-  "description": "老徐说AI 发布的 Skill Flow 工作流插件",
+  "description": "JeasonKim 发布的 Skill Flow 工作流插件",
   "plugins": [
     {
       "name": "wf-mrk3toat216b141c",
