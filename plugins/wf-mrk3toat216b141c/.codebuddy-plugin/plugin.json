@@ -1,6 +1,6 @@
 {
   "name": "wf-mrk3toat216b141c",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Creates a practical Zi Wei life report from normalized birth data, solar-time correction, chart generation, and clear narrative analysis.",
   "author": {
     "name": "官方账号"
@@ -80,6 +80,10 @@
       ],
       "env": {
         "SKILLFLOW_PLUGIN_HOST": "workbuddy"
+      },
+      "runtime": {
+        "type": "node",
+        "version": ">=18"
       }
     }
   }

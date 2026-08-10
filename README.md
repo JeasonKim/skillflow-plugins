@@ -11,55 +11,29 @@
 | --- | --- | --- |
 | 紫微斗数人生报告 | [`wf-mrk3toat216b141c`](./plugins/wf-mrk3toat216b141c) | Codex、Claude Code、WorkBuddy |
 
-## Codex 安装方法
+## 发给 Agent 的安装提示
 
-把下面的文字发给 Codex，并将插件名替换为上表中需要安装的插件：
+复制下面整段发给当前 Agent；需要安装其他插件时只替换插件名称：
 
-> 请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”Codex 插件。
+```text
+请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”。先在 README 的“可用插件”中按名称找到 Code，以下 <code> 使用该值；只执行当前平台对应步骤。
 
-也可以直接运行：
-
-```bash
+Codex：
 codex plugin marketplace add JeasonKim/skillflow-plugins --ref main
-codex plugin add wf-mrk3toat216b141c@jeasonkim-plugins
+codex plugin add <code>@jeasonkim-plugins
 codex plugin list
-```
 
-首次安装后开启新对话；已有插件升级后，完整退出并重新启动 Codex Desktop，再开启新对话。
-
-## Claude Code 安装方法
-
-把下面的文字发给 Claude Code：
-
-> 请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”Claude Code 插件。
-
-```bash
+Claude Code：
 claude plugin marketplace add JeasonKim/skillflow-plugins@main
-claude plugin install wf-mrk3toat216b141c@jeasonkim-plugins
+claude plugin install <code>@jeasonkim-plugins
 claude plugin list
+
+WorkBuddy：
+1. 读取 workbuddy-install.json；把 plugins/<code> 安装到 my-experts，并用内置 expert-manager 校验、注册。不要把本仓库注册为普通的自定义 Marketplace。
+2. 将 .codebuddy-plugin/plugin.json 的 mcpServers 原样合并到 mcp.json，必须保留 runtime.type=node，且不能含未解析的 PLUGIN_ROOT。
+3. 设置 settings.json 的 enabledPlugins["<code>@my-experts"]=true；信任配置由 WorkBuddy UI 写入，不要预写。
+4. 完整重启 WorkBuddy，并开启新会话。若仍无工具，停止并检查 render_workflow_dashboard_widget、create_task、start_task、complete_node。
 ```
-
-仓库更新后运行 `claude plugin marketplace update jeasonkim-plugins`，再更新对应插件。
-
-## WorkBuddy 安装方法
-
-把下面的文字发给 WorkBuddy：
-
-> 请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”WorkBuddy 专家。
-
-安装 Agent 必须先读取根目录的 [`workbuddy-install.json`](./workbuddy-install.json)，并以其中的目标市场、分支和专家列表为准。
-
-这些 WorkBuddy 产物是专家包。目标市场固定为 `my-experts`，不要把本仓库注册为普通的自定义 Marketplace；自定义 Marketplace 中的插件不会出现在专家中心。
-
-将选中的 `plugins/<plugin-name>` 安装到 `$WORKBUDDY_CONFIG_DIR/plugins/marketplaces/my-experts/plugins`（未设置时默认 `~/.workbuddy/plugins/marketplaces/my-experts/plugins`），再按 WorkBuddy 内置 `expert-manager` 执行校验和注册。仓库分支使用 `main`。
-
-连接专家依赖时，WorkBuddy 会把插件中的 MCP 声明写入 `custom-mcp`。必须原样保留自定位启动参数，不能替换为 `CODEBUDDY_PLUGIN_ROOT`；连接后检查 MCP 配置中没有未解析的 `PLUGIN_ROOT`，并确认工具列表包含 `render_workflow_dashboard_widget`。如果连接或工具校验失败，停止安装并报告。
-
-安装成功后在【专家中心 → 我的专家】中查找：
-
-| 专家 | 专家中心分类 | 技术名称 |
-| --- | --- | --- |
-| 紫微斗数人生报告 | 行业顾问 | `wf-mrk3toat216b141c` |
 
 ## 仓库信息
 

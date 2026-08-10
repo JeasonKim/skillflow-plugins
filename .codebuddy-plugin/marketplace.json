@@ -19,7 +19,7 @@
       "name": "wf-mrk3toat216b141c",
       "description": "Creates a practical Zi Wei life report from normalized birth data, solar-time correction, chart generation, and clear narrative analysis.",
       "source": "./plugins/wf-mrk3toat216b141c",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "author": {
         "name": "官方账号"
       },

@@ -13,7 +13,17 @@
     "launchPathMode": "self-locating",
     "unresolvedVariablePolicy": "reject",
     "requiredTools": [
-      "render_workflow_dashboard_widget"
+      "render_workflow_dashboard_widget",
+      "create_task",
+      "start_task",
+      "complete_node"
     ]
+  },
+  "installation": {
+    "targetDirectory": "$WORKBUDDY_CONFIG_DIR/plugins/marketplaces/my-experts/plugins",
+    "enabledPluginKey": "<plugin-code>@my-experts",
+    "mergeMcpServersVerbatim": true,
+    "requiresRestart": true,
+    "requiresNewSession": true
   }
 }

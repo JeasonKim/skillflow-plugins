@@ -1,7 +1,7 @@
 {
   "name": "wf-mrk3toat216b141c",
   "displayName": "紫微斗数人生报告",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程，报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
   "author": {
     "name": "官方账号"
