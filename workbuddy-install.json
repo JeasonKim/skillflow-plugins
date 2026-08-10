@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 2,
+  "marketplaceName": "jeasonkim-plugins",
+  "type": "expert",
+  "targetMarketplace": "my-experts",
+  "branch": "main",
+  "plugins": [
+    "wf-mrk3toat216b141c"
+  ],
+  "mcp": {
+    "source": "expert-plugin-manifest",
+    "connectionMode": "custom-mcp",
+    "launchPathMode": "self-locating",
+    "unresolvedVariablePolicy": "reject",
+    "requiredTools": [
+      "render_workflow_dashboard_widget"
+    ]
+  }
+}

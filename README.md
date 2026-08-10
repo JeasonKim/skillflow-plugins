@@ -39,7 +39,19 @@ claude plugin list
 
 ## WorkBuddy 安装方法
 
-在 WorkBuddy 的插件市场中添加 GitHub 仓库 `JeasonKim/skillflow-plugins`，选择需要的单 Agent 专家并安装。仓库分支使用 `main`。
+安装 Agent 必须先读取根目录的 [`workbuddy-install.json`](./workbuddy-install.json)，并以其中的目标市场、分支和专家列表为准。
+
+这些 WorkBuddy 产物是专家包。目标市场固定为 `my-experts`，不要把本仓库注册为普通的自定义 Marketplace；自定义 Marketplace 中的插件不会出现在专家中心。
+
+将选中的 `plugins/<plugin-name>` 安装到 `$WORKBUDDY_CONFIG_DIR/plugins/marketplaces/my-experts/plugins`（未设置时默认 `~/.workbuddy/plugins/marketplaces/my-experts/plugins`），再按 WorkBuddy 内置 `expert-manager` 执行校验和注册。仓库分支使用 `main`。
+
+连接专家依赖时，WorkBuddy 会把插件中的 MCP 声明写入 `custom-mcp`。必须原样保留自定位启动参数，不能替换为 `CODEBUDDY_PLUGIN_ROOT`；连接后检查 MCP 配置中没有未解析的 `PLUGIN_ROOT`，并确认工具列表包含 `render_workflow_dashboard_widget`。如果连接或工具校验失败，停止安装并报告。
+
+安装成功后在【专家中心 → 我的专家】中查找：
+
+| 专家 | 专家中心分类 | 技术名称 |
+| --- | --- | --- |
+| 紫微斗数人生报告 | 行业顾问 | `wf-mrk3toat216b141c` |
 
 ## 仓库信息
 
@@ -54,6 +66,7 @@ claude plugin list
 .agents/plugins/marketplace.json   # Codex 插件市场目录
 .claude-plugin/marketplace.json    # Claude Code 插件市场目录
 .codebuddy-plugin/marketplace.json # WorkBuddy 插件市场目录
+workbuddy-install.json             # WorkBuddy 专家安装目标与分支契约
 plugins/<plugin-name>/             # 各平台共用的 Skill Flow 插件分包
 LICENSE                            # MIT License
 README.md                          # 自动生成的安装说明和插件索引

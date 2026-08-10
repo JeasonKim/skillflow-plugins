@@ -1,23 +1,19 @@
 {
-  "userId": "1",
-  "displayName": "老徐说AI",
-  "avatarUrl": "https://oss.penstairs.com/creator-profile-assets/user-1/avatar/20260724071841823-74037526314091520-0ae50140bfb3.webp",
-  "bio": "致力于把AI真实落地，不讲AI故事。已服务30+博主及MCN机构。（持续增长ing）",
+  "userId": "50744786411324495",
+  "displayName": "官方账号",
+  "avatarUrl": "https://oss.penstairs.com/creator-profile-assets/user-50744786411324495/avatar/current?v=1784903465106",
+  "bio": "让专业方法被看见，让每一次创作都有源头可寻。",
   "links": [
-    {
-      "platform": "github",
-      "url": "https://github.com/xuntianx",
-      "label": "Github"
-    },
-    {
-      "platform": "x",
-      "url": "https://x.com/zarazhangrui",
-      "label": "X"
-    },
     {
       "platform": "website",
       "url": "https://skillflow.run",
-      "label": "官网"
+      "label": "官方主页"
+    },
+    {
+      "platform": "website",
+      "url": "https://skillflow.penstairs.com",
+      "label": "作品集"
     }
-  ]
+  ],
+  "updatedAt": "2026-07-28T23:10:41.000Z"
 }

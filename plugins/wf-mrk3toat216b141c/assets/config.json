@@ -3,11 +3,11 @@
   "displayName": "紫微斗数人生报告",
   "shortDescription": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程，报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
   "longDescription": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程，报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "monetizationMode": "free",
   "apiBase": "https://api.penstairs.com",
-  "skillFlowVersionId": "74084151036216320",
+  "skillFlowVersionId": "73343445053211648",
   "brandColor": "#2563EB",
-  "logoPath": "/plugin-assets/logo.webp",
-  "profileEndpoint": "/creator-commission/profiles/1"
+  "logoPath": "/plugin-assets/logo.png",
+  "profileEndpoint": "/creator-commission/profiles/50744786411324495"
 }
