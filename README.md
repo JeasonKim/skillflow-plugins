@@ -7,15 +7,15 @@
 
 ## 可用插件
 
-| 插件 | 支持平台 |
-| --- | --- |
-| [`wf-mrk3toat216b141c`](./plugins/wf-mrk3toat216b141c) | Codex、Claude Code、WorkBuddy |
+| 插件名称 | Code | 支持平台 |
+| --- | --- | --- |
+| 紫微斗数人生报告 | [`wf-mrk3toat216b141c`](./plugins/wf-mrk3toat216b141c) | Codex、Claude Code、WorkBuddy |
 
 ## Codex 安装方法
 
 把下面的文字发给 Codex，并将插件名替换为上表中需要安装的插件：
 
-> 请从 https://github.com/JeasonKim/skillflow-plugins 安装 `wf-mrk3toat216b141c` Codex 插件。
+> 请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”Codex 插件。
 
 也可以直接运行：
 
@@ -29,6 +29,10 @@ codex plugin list
 
 ## Claude Code 安装方法
 
+把下面的文字发给 Claude Code：
+
+> 请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”Claude Code 插件。
+
 ```bash
 claude plugin marketplace add JeasonKim/skillflow-plugins@main
 claude plugin install wf-mrk3toat216b141c@jeasonkim-plugins
@@ -38,6 +42,10 @@ claude plugin list
 仓库更新后运行 `claude plugin marketplace update jeasonkim-plugins`，再更新对应插件。
 
 ## WorkBuddy 安装方法
+
+把下面的文字发给 WorkBuddy：
+
+> 请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”WorkBuddy 专家。
 
 安装 Agent 必须先读取根目录的 [`workbuddy-install.json`](./workbuddy-install.json)，并以其中的目标市场、分支和专家列表为准。
 
