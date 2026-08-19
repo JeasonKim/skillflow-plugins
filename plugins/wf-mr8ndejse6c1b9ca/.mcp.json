@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "wf-mr8ndejse6c1b9ca": {
+      "command": "node",
+      "args": [
+        "./mcp/server.bundle.mjs"
+      ],
+      "cwd": ".",
+      "env": {
+        "SKILLFLOW_PLUGIN_HOST": "codex"
+      }
+    }
+  }
+}

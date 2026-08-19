@@ -6,6 +6,51 @@
   },
   "plugins": [
     {
+      "technicalName": "wf-mr8ndejse6c1b9ca",
+      "repositoryPath": "plugins/wf-mr8ndejse6c1b9ca",
+      "version": "1.0.0",
+      "displayName": {
+        "zh": "一起共建声波档案",
+        "en": "SoundWave Archive - Podcast & Video Transcript Builder"
+      },
+      "description": {
+        "zh": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+        "en": "Convert podcasts and videos into readable Chinese transcripts, then deliver illustrated HTML, desktop PDF, and mobile EPUB in parallel with backlog and archive management."
+      },
+      "author": {
+        "name": "Dylan"
+      },
+      "categoryId": "06-ContentCreative",
+      "tags": [
+        {
+          "zh": "播客转录",
+          "en": "Podcast Transcription"
+        },
+        {
+          "zh": "逐字稿整理",
+          "en": "Transcript Editing"
+        },
+        {
+          "zh": "多格式发布",
+          "en": "Multi-format Publishing"
+        }
+      ],
+      "quickPrompts": [
+        {
+          "zh": "帮我把这个播客转为完整中文逐字稿并生成 HTML、PDF 和 EPUB",
+          "en": "Transcribe this podcast into a full Chinese transcript and generate HTML, PDF, and EPUB"
+        },
+        {
+          "zh": "处理这个 YouTube 视频并整理成可阅读的逐字稿文章",
+          "en": "Process this YouTube video and turn it into a readable transcript article"
+        },
+        {
+          "zh": "检查我的播客 backlog 并更新待处理候选列表",
+          "en": "Check my podcast backlog and update the pending episode list"
+        }
+      ]
+    },
+    {
       "technicalName": "wf-mrk3toat216b141c",
       "repositoryPath": "plugins/wf-mrk3toat216b141c",
       "version": "1.1.2",

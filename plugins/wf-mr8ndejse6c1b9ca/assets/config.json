@@ -1,0 +1,13 @@
+{
+  "technicalName": "wf-mr8ndejse6c1b9ca",
+  "displayName": "一起共建声波档案",
+  "shortDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+  "longDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+  "version": "1.0.0",
+  "monetizationMode": "free",
+  "apiBase": "http://localhost:3000",
+  "skillFlowVersionId": "83499125437367296",
+  "brandColor": "#2563EB",
+  "logoPath": "/plugin-assets/logo.png",
+  "profileEndpoint": "/creator-commission/profiles/1"
+}

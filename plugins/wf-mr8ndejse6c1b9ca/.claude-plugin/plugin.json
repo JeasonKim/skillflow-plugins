@@ -1,0 +1,22 @@
+{
+  "name": "wf-mr8ndejse6c1b9ca",
+  "displayName": "一起共建声波档案",
+  "version": "1.0.0",
+  "description": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+  "author": {
+    "name": "Dylan"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/xuntianx",
+  "keywords": [
+    "workflow",
+    "skillflow",
+    "claude-code",
+    "wf-mr8ndejse6c1b9ca",
+    "Podcast Transcription",
+    "Transcript Editing",
+    "Multi-format Publishing"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.claude.json"
+}

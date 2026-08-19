@@ -1,0 +1,41 @@
+{
+  "name": "wf-mr8ndejse6c1b9ca",
+  "version": "1.0.0",
+  "description": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+  "author": {
+    "name": "Dylan"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/xuntianx",
+  "keywords": [
+    "workflow",
+    "skillflow",
+    "codex",
+    "wf-mr8ndejse6c1b9ca",
+    "Podcast Transcription",
+    "Transcript Editing",
+    "Multi-format Publishing"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "SoundWave Archive - Podcast & Video Transcript Builder",
+    "shortDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+    "longDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+    "developerName": "Dylan",
+    "category": "Productivity",
+    "capabilities": [
+      "Single Skill Flow workflow",
+      "Task execution",
+      "Native workflow dashboard"
+    ],
+    "defaultPrompt": [
+      "Transcribe this podcast into a full Chinese transcript and generate HTML, PDF, and EPUB",
+      "Process this YouTube video and turn it into a readable transcript article",
+      "Check my podcast backlog and update the pending episode list"
+    ],
+    "brandColor": "#2563EB",
+    "composerIcon": "./assets/logo.png",
+    "logo": "./assets/logo.png"
+  }
+}

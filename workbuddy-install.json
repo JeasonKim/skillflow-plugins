@@ -5,6 +5,7 @@
   "targetMarketplace": "my-experts",
   "branch": "main",
   "plugins": [
+    "wf-mr8ndejse6c1b9ca",
     "wf-mrk3toat216b141c"
   ],
   "mcp": {

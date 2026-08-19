@@ -16,6 +16,16 @@
   },
   "plugins": [
     {
+      "name": "wf-mr8ndejse6c1b9ca",
+      "description": "Convert podcasts and videos into readable Chinese transcripts, then deliver illustrated HTML, desktop PDF, and mobile EPUB in parallel with backlog and archive management.",
+      "source": "./plugins/wf-mr8ndejse6c1b9ca",
+      "version": "1.0.0",
+      "author": {
+        "name": "Dylan"
+      },
+      "category": "06-ContentCreative"
+    },
+    {
       "name": "wf-mrk3toat216b141c",
       "description": "Creates a practical Zi Wei life report from normalized birth data, solar-time correction, chart generation, and clear narrative analysis.",
       "source": "./plugins/wf-mrk3toat216b141c",

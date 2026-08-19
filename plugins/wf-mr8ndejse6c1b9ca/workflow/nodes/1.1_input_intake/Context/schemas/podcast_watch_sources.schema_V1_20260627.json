@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "podcast_watch_sources.schema_V1_20260627.json",
+  "title": "podcast_watch_sources.jsonl line",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "podcastName",
+    "podcastTier",
+    "preferredSource",
+    "officialSiteUrl",
+    "rssUrl",
+    "appleUrl",
+    "youtubeChannelUrl",
+    "youtubePlaylistUrl",
+    "status",
+    "lastVerifiedAt",
+    "notes"
+  ],
+  "properties": {
+    "podcastName": { "type": "string" },
+    "podcastTier": { "type": "string" },
+    "preferredSource": { "type": "string" },
+    "officialSiteUrl": { "type": "string" },
+    "rssUrl": { "type": "string" },
+    "appleUrl": { "type": "string" },
+    "youtubeChannelUrl": { "type": "string" },
+    "youtubePlaylistUrl": { "type": "string" },
+    "status": { "type": "string", "enum": ["verified", "partial", "unverified", "retired"] },
+    "lastVerifiedAt": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "userId": "1",
+  "displayName": "Dylan",
+  "avatarUrl": "https://soundwave-wiki.hardydai293915.workers.dev/assets/contributors/dylan-avatar_V1_20260804.webp",
+  "bio": "致力于把AI真实落地，不讲AI故事。已服务30+博主及MCN机构。（持续增长ing）",
+  "links": [
+    {
+      "platform": "github",
+      "url": "https://github.com/xuntianx",
+      "label": "Github"
+    },
+    {
+      "platform": "x",
+      "url": "https://x.com/zarazhangrui",
+      "label": "X"
+    },
+    {
+      "platform": "website",
+      "url": "https://skillflow.run",
+      "label": "官网"
+    }
+  ],
+  "updatedAt": "2026-08-18T09:16:31.000Z"
+}

@@ -5,6 +5,18 @@
   },
   "plugins": [
     {
+      "name": "wf-mr8ndejse6c1b9ca",
+      "source": {
+        "source": "local",
+        "path": "./plugins/wf-mr8ndejse6c1b9ca"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "wf-mrk3toat216b141c",
       "source": {
         "source": "local",
@@ -12,7 +24,7 @@
       },
       "policy": {
         "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
+        "authentication": "ON_USE"
       },
       "category": "Productivity"
     }

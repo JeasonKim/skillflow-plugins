@@ -1,0 +1,90 @@
+{
+  "name": "wf-mr8ndejse6c1b9ca",
+  "version": "1.0.0",
+  "description": "Convert podcasts and videos into readable Chinese transcripts, then deliver illustrated HTML, desktop PDF, and mobile EPUB in parallel with backlog and archive management.",
+  "author": {
+    "name": "Dylan"
+  },
+  "homepage": "https://github.com/xuntianx",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "skillflow",
+    "workbuddy",
+    "Podcast Transcription",
+    "Transcript Editing",
+    "Multi-format Publishing"
+  ],
+  "agents": [
+    "./agents/wf-mr8ndejse6c1b9ca.md"
+  ],
+  "skills": [
+    "./skills/wf-mr8ndejse6c1b9ca"
+  ],
+  "expertType": "agent",
+  "agentName": "wf-mr8ndejse6c1b9ca",
+  "displayName": {
+    "zh": "一起共建声波档案",
+    "en": "SoundWave Archive - Podcast & Video Transcript Builder"
+  },
+  "profession": {
+    "zh": "播客与视频逐字稿整理专家",
+    "en": "Podcast & Video Transcript Specialist"
+  },
+  "displayDescription": {
+    "zh": "把科技播客与视频转为可阅读的中文逐字稿，并行输出图文HTML、PDF和手机EPUB",
+    "en": "Turn tech podcasts and videos into readable Chinese transcripts and deliver HTML, PDF, and EPUB in parallel."
+  },
+  "avatar": "./assets/logo.png",
+  "categoryId": "06-ContentCreative",
+  "defaultInitPrompt": {
+    "zh": "帮我把这个播客转为完整中文逐字稿并生成 HTML、PDF 和 EPUB",
+    "en": "Transcribe this podcast into a full Chinese transcript and generate HTML, PDF, and EPUB"
+  },
+  "plugin": "wf-mr8ndejse6c1b9ca",
+  "tags": [
+    {
+      "zh": "播客转录",
+      "en": "Podcast Transcription"
+    },
+    {
+      "zh": "逐字稿整理",
+      "en": "Transcript Editing"
+    },
+    {
+      "zh": "多格式发布",
+      "en": "Multi-format Publishing"
+    }
+  ],
+  "quickPrompts": [
+    {
+      "zh": "帮我把这个播客转为完整中文逐字稿并生成 HTML、PDF 和 EPUB",
+      "en": "Transcribe this podcast into a full Chinese transcript and generate HTML, PDF, and EPUB"
+    },
+    {
+      "zh": "处理这个 YouTube 视频并整理成可阅读的逐字稿文章",
+      "en": "Process this YouTube video and turn it into a readable transcript article"
+    },
+    {
+      "zh": "检查我的播客 backlog 并更新待处理候选列表",
+      "en": "Check my podcast backlog and update the pending episode list"
+    }
+  ],
+  "mcpServers": {
+    "wf-mr8ndejse6c1b9ca": {
+      "command": "node",
+      "args": [
+        "--input-type=module",
+        "--eval",
+        "import { homedir } from 'node:os';import { join } from 'node:path';import { pathToFileURL } from 'node:url';const configRoot = process.env.WORKBUDDY_CONFIG_DIR?.trim() || join(homedir(), '.workbuddy');const entryPath = join(configRoot, 'plugins', 'marketplaces', 'my-experts', 'plugins', \"wf-mr8ndejse6c1b9ca\", ...[\"mcp\",\"server.bundle.mjs\"]);await import(pathToFileURL(entryPath).href)"
+      ],
+      "env": {
+        "SKILLFLOW_PLUGIN_HOST": "workbuddy"
+      },
+      "runtime": {
+        "type": "node",
+        "version": ">=18"
+      }
+    }
+  }
+}

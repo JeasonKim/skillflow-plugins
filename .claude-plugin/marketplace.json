@@ -6,6 +6,15 @@
   "description": "JeasonKim 发布的 Skill Flow 工作流插件",
   "plugins": [
     {
+      "name": "wf-mr8ndejse6c1b9ca",
+      "source": "./plugins/wf-mr8ndejse6c1b9ca",
+      "description": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
+      "author": {
+        "name": "Dylan"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "wf-mrk3toat216b141c",
       "source": "./plugins/wf-mrk3toat216b141c",
       "description": "将用户出生信息转换为可复用的紫微斗数人生报告生成流程，报告表达避免术语堆砌、宿命化、鸡汤化和具体事件臆测。",

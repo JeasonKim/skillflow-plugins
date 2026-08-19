@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "wf-mr8ndejse6c1b9ca": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/mcp/server.bundle.mjs"
+      ],
+      "env": {
+        "SKILLFLOW_PLUGIN_DATA_ROOT": "${CLAUDE_PLUGIN_DATA}",
+        "SKILLFLOW_PLUGIN_HOST": "claude-code"
+      }
+    }
+  }
+}

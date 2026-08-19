@@ -9,6 +9,7 @@
 
 | 插件名称 | Code | 支持平台 |
 | --- | --- | --- |
+| 一起共建声波档案 | [`wf-mr8ndejse6c1b9ca`](./plugins/wf-mr8ndejse6c1b9ca) | Codex、Claude Code、WorkBuddy |
 | 紫微斗数人生报告 | [`wf-mrk3toat216b141c`](./plugins/wf-mrk3toat216b141c) | Codex、Claude Code、WorkBuddy |
 
 ## 发给 Agent 的安装提示
@@ -16,7 +17,7 @@
 复制下面整段发给当前 Agent；需要安装其他插件时只替换插件名称：
 
 ```text
-请从 https://github.com/JeasonKim/skillflow-plugins 安装“紫微斗数人生报告”。先在 README 的“可用插件”中按名称找到 Code，以下 <code> 使用该值；只执行当前平台对应步骤。
+请从 https://github.com/JeasonKim/skillflow-plugins 安装“一起共建声波档案”。先在 README 的“可用插件”中按名称找到 Code，以下 <code> 使用该值；只执行当前平台对应步骤。
 
 Codex：
 codex plugin marketplace add JeasonKim/skillflow-plugins --ref main
@@ -32,7 +33,7 @@ WorkBuddy：
 1. 读取 workbuddy-install.json；把 plugins/<code> 安装到 my-experts，并用内置 expert-manager 校验、注册。不要把本仓库注册为普通的自定义 Marketplace。
 2. 将 .codebuddy-plugin/plugin.json 的 mcpServers 原样合并到 mcp.json，必须保留 runtime.type=node，且不能含未解析的 PLUGIN_ROOT。
 3. 设置 settings.json 的 enabledPlugins["<code>@my-experts"]=true；信任配置由 WorkBuddy UI 写入，不要预写。
-4. 完整重启 WorkBuddy，并开启新会话。若仍无工具，停止并检查 render_workflow_dashboard_widget、create_task、start_task、complete_node。
+4. 完整重启 WorkBuddy，并开启新会话。若仍无工具，停止并检查 render_workflow_dashboard_widget、create_task、start_task、complete_node、submit_task_work、get_task_status。
 ```
 
 ## 仓库信息

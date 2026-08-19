@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "podcast_episode_backlog.schema_V1_20260627.json",
+  "title": "podcast_episode_backlog.jsonl line",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "podcastName",
+    "podcastTier",
+    "episodeTitle",
+    "episodeUrl",
+    "episodeId",
+    "canonicalKey",
+    "source",
+    "publishedAt",
+    "status",
+    "discoveredAt",
+    "lastCheckedAt",
+    "matchedProcessedTaskCode",
+    "priority",
+    "reason",
+    "sourceConfidence",
+    "notes"
+  ],
+  "properties": {
+    "podcastName": { "type": "string" },
+    "podcastTier": { "type": "string" },
+    "episodeTitle": { "type": "string" },
+    "episodeUrl": { "type": "string" },
+    "episodeId": { "type": "string" },
+    "canonicalKey": { "type": "string" },
+    "source": { "type": "string" },
+    "publishedAt": { "type": "string" },
+    "status": { "type": "string", "enum": ["todo", "processed", "skipped", "uncertain"] },
+    "discoveredAt": { "type": "string" },
+    "lastCheckedAt": { "type": "string" },
+    "matchedProcessedTaskCode": { "type": "string" },
+    "priority": { "type": "string", "enum": ["", "high", "medium", "low"] },
+    "reason": { "type": "string" },
+    "sourceConfidence": { "type": "string", "enum": ["high", "medium", "low", "unknown"] },
+    "notes": { "type": "string" }
+  }
+}
