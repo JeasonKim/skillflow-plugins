@@ -1,6 +1,6 @@
 {
   "name": "wf-mr8ndejse6c1b9ca",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
   "author": {
     "name": "Dylan"
@@ -13,13 +13,13 @@
     "codex",
     "wf-mr8ndejse6c1b9ca",
     "Podcast Transcription",
-    "Transcript Editing",
-    "Multi-format Publishing"
+    "Chinese Transcripts",
+    "Content Archiving"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "SoundWave Archive - Podcast & Video Transcript Builder",
+    "displayName": "一起共建声波档案",
     "shortDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
     "longDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
     "developerName": "Dylan",
@@ -30,9 +30,9 @@
       "Native workflow dashboard"
     ],
     "defaultPrompt": [
-      "Transcribe this podcast into a full Chinese transcript and generate HTML, PDF, and EPUB",
-      "Process this YouTube video and turn it into a readable transcript article",
-      "Check my podcast backlog and update the pending episode list"
+      "Please turn this video or podcast into a complete Chinese transcript and readable deliverables.",
+      "Please check whether this podcast episode has been processed and organize available subtitle or transcription sources.",
+      "Please generate an illustrated HTML article, desktop PDF, and mobile EPUB from the full transcript."
     ],
     "brandColor": "#2563EB",
     "composerIcon": "./assets/logo.png",

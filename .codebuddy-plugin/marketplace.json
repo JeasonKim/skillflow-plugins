@@ -17,9 +17,9 @@
   "plugins": [
     {
       "name": "wf-mr8ndejse6c1b9ca",
-      "description": "Convert podcasts and videos into readable Chinese transcripts, then deliver illustrated HTML, desktop PDF, and mobile EPUB in parallel with backlog and archive management.",
+      "description": "Transforms videos, podcasts, and audio sources into traceable Chinese transcripts, polished long-form HTML, desktop PDFs, mobile EPUBs, and archive-ready publishing records.",
       "source": "./plugins/wf-mr8ndejse6c1b9ca",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Dylan"
       },

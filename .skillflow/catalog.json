@@ -8,14 +8,14 @@
     {
       "technicalName": "wf-mr8ndejse6c1b9ca",
       "repositoryPath": "plugins/wf-mr8ndejse6c1b9ca",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "displayName": {
         "zh": "一起共建声波档案",
-        "en": "SoundWave Archive - Podcast & Video Transcript Builder"
+        "en": "Sonic Archive Builder"
       },
       "description": {
         "zh": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
-        "en": "Convert podcasts and videos into readable Chinese transcripts, then deliver illustrated HTML, desktop PDF, and mobile EPUB in parallel with backlog and archive management."
+        "en": "Transforms videos, podcasts, and audio sources into traceable Chinese transcripts, polished long-form HTML, desktop PDFs, mobile EPUBs, and archive-ready publishing records."
       },
       "author": {
         "name": "Dylan"
@@ -27,26 +27,26 @@
           "en": "Podcast Transcription"
         },
         {
-          "zh": "逐字稿整理",
-          "en": "Transcript Editing"
+          "zh": "中文逐字稿",
+          "en": "Chinese Transcripts"
         },
         {
-          "zh": "多格式发布",
-          "en": "Multi-format Publishing"
+          "zh": "内容归档",
+          "en": "Content Archiving"
         }
       ],
       "quickPrompts": [
         {
-          "zh": "帮我把这个播客转为完整中文逐字稿并生成 HTML、PDF 和 EPUB",
-          "en": "Transcribe this podcast into a full Chinese transcript and generate HTML, PDF, and EPUB"
+          "zh": "请把这个视频或播客整理成完整中文逐字稿，并生成可阅读交付物。",
+          "en": "Please turn this video or podcast into a complete Chinese transcript and readable deliverables."
         },
         {
-          "zh": "处理这个 YouTube 视频并整理成可阅读的逐字稿文章",
-          "en": "Process this YouTube video and turn it into a readable transcript article"
+          "zh": "请检查这期播客是否已处理过，并整理可用字幕或转录来源。",
+          "en": "Please check whether this podcast episode has been processed and organize available subtitle or transcription sources."
         },
         {
-          "zh": "检查我的播客 backlog 并更新待处理候选列表",
-          "en": "Check my podcast backlog and update the pending episode list"
+          "zh": "请基于完整逐字稿生成图文 HTML、电脑阅读 PDF 和手机 EPUB。",
+          "en": "Please generate an illustrated HTML article, desktop PDF, and mobile EPUB from the full transcript."
         }
       ]
     },
