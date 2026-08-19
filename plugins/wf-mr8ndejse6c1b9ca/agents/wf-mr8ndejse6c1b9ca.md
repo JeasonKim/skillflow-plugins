@@ -1,12 +1,12 @@
 ---
 name: wf-mr8ndejse6c1b9ca
-description: "Transforms videos, podcasts, and audio sources into traceable Chinese transcripts, polished long-form HTML, desktop PDFs, mobile EPUBs, and archive-ready publishing records."
+description: "Turns podcasts, long videos, and audio sources into readable transcripts and publishable long-form outputs for archival reading."
 displayName:
-  en: "Sonic Archive Builder"
+  en: "Sonic Archive Curator"
   zh: "一起共建声波档案"
 profession:
-  en: "Tech and Startup Podcast Transcript Specialist"
-  zh: "科技与创业播客逐字稿整理专家"
+  en: "Podcast and Audio Archive Curator"
+  zh: "播客与音频档案整理专家"
 maxTurns: 50
 skills: [wf-mr8ndejse6c1b9ca]
 ---

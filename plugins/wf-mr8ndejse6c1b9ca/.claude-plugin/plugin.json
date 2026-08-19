@@ -1,7 +1,7 @@
 {
   "name": "wf-mr8ndejse6c1b9ca",
   "displayName": "一起共建声波档案",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
   "author": {
     "name": "Dylan"
@@ -13,9 +13,9 @@
     "skillflow",
     "claude-code",
     "wf-mr8ndejse6c1b9ca",
-    "Podcast Transcription",
-    "Chinese Transcripts",
-    "Content Archiving"
+    "podcast curation",
+    "transcript editing",
+    "long-form archiving"
   ],
   "skills": "./skills/",
   "mcpServers": "./.mcp.claude.json"

@@ -1,7 +1,7 @@
 {
   "name": "wf-mr8ndejse6c1b9ca",
-  "version": "1.0.1",
-  "description": "Transforms videos, podcasts, and audio sources into traceable Chinese transcripts, polished long-form HTML, desktop PDFs, mobile EPUBs, and archive-ready publishing records.",
+  "version": "1.0.2",
+  "description": "Turns podcasts, long videos, and audio sources into readable transcripts and publishable long-form outputs for archival reading.",
   "author": {
     "name": "Dylan"
   },
@@ -11,9 +11,9 @@
     "workflow",
     "skillflow",
     "workbuddy",
-    "Podcast Transcription",
-    "Chinese Transcripts",
-    "Content Archiving"
+    "podcast curation",
+    "transcript editing",
+    "long-form archiving"
   ],
   "agents": [
     "./agents/wf-mr8ndejse6c1b9ca.md"
@@ -25,49 +25,49 @@
   "agentName": "wf-mr8ndejse6c1b9ca",
   "displayName": {
     "zh": "一起共建声波档案",
-    "en": "Sonic Archive Builder"
+    "en": "Sonic Archive Curator"
   },
   "profession": {
-    "zh": "科技与创业播客逐字稿整理专家",
-    "en": "Tech and Startup Podcast Transcript Specialist"
+    "zh": "播客与音频档案整理专家",
+    "en": "Podcast and Audio Archive Curator"
   },
   "displayDescription": {
-    "zh": "把视频、播客和音频素材转成可读中文逐字稿、网页长文、电脑PDF与手机EPUB档案",
-    "en": "Turns video and podcast audio into readable Chinese transcripts, long-form web articles, PDFs, and EPUB archives."
+    "zh": "将播客、长视频与网页音频转成可读逐字稿，并同步产出HTML、PDF、EPUB，方便长期归档与反复检索",
+    "en": "Converts podcasts, long videos, and web audio into readable transcripts, then produces HTML, PDF, and EPUB for long-term archiving and review."
   },
   "avatar": "./assets/logo.png",
   "categoryId": "06-ContentCreative",
   "defaultInitPrompt": {
-    "zh": "请把这个视频或播客整理成完整中文逐字稿，并生成可阅读交付物。",
-    "en": "Please turn this video or podcast into a complete Chinese transcript and readable deliverables."
+    "zh": "把这期音频转成可读逐字稿，并保留说话人和时间线",
+    "en": "Turn this audio into a readable transcript with speakers and timestamps."
   },
   "plugin": "wf-mr8ndejse6c1b9ca",
   "tags": [
     {
-      "zh": "播客转录",
-      "en": "Podcast Transcription"
+      "zh": "播客整理",
+      "en": "podcast curation"
     },
     {
-      "zh": "中文逐字稿",
-      "en": "Chinese Transcripts"
+      "zh": "逐字稿编辑",
+      "en": "transcript editing"
     },
     {
-      "zh": "内容归档",
-      "en": "Content Archiving"
+      "zh": "长文归档",
+      "en": "long-form archiving"
     }
   ],
   "quickPrompts": [
     {
-      "zh": "请把这个视频或播客整理成完整中文逐字稿，并生成可阅读交付物。",
-      "en": "Please turn this video or podcast into a complete Chinese transcript and readable deliverables."
+      "zh": "把这期音频转成可读逐字稿，并保留说话人和时间线",
+      "en": "Turn this audio into a readable transcript with speakers and timestamps."
     },
     {
-      "zh": "请检查这期播客是否已处理过，并整理可用字幕或转录来源。",
-      "en": "Please check whether this podcast episode has been processed and organize available subtitle or transcription sources."
+      "zh": "先判断输入来源是否可直接处理，再说明缺什么",
+      "en": "Check the source first, then tell me whether it can be processed and what is missing."
     },
     {
-      "zh": "请基于完整逐字稿生成图文 HTML、电脑阅读 PDF 和手机 EPUB。",
-      "en": "Please generate an illustrated HTML article, desktop PDF, and mobile EPUB from the full transcript."
+      "zh": "基于逐字稿继续生成适合网页、PDF 和 EPUB 的版本",
+      "en": "From the transcript, generate versions for web, PDF, and EPUB."
     }
   ],
   "mcpServers": {
