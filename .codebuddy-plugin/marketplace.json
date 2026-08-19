@@ -17,9 +17,9 @@
   "plugins": [
     {
       "name": "wf-mr8ndejse6c1b9ca",
-      "description": "Turns podcasts, long videos, and audio sources into readable transcripts and publishable long-form outputs for archival reading.",
+      "description": "Transforms long videos, podcasts, web media, and audio files into polished Chinese transcripts with HTML, PDF, EPUB, backlog tracking, and site publishing support.",
       "source": "./plugins/wf-mr8ndejse6c1b9ca",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "author": {
         "name": "Dylan"
       },

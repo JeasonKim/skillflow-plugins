@@ -8,14 +8,14 @@
     {
       "technicalName": "wf-mr8ndejse6c1b9ca",
       "repositoryPath": "plugins/wf-mr8ndejse6c1b9ca",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "displayName": {
         "zh": "一起共建声波档案",
-        "en": "Sonic Archive Curator"
+        "en": "Sonic Archive Builder"
       },
       "description": {
         "zh": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
-        "en": "Turns podcasts, long videos, and audio sources into readable transcripts and publishable long-form outputs for archival reading."
+        "en": "Transforms long videos, podcasts, web media, and audio files into polished Chinese transcripts with HTML, PDF, EPUB, backlog tracking, and site publishing support."
       },
       "author": {
         "name": "Dylan"
@@ -24,29 +24,29 @@
       "tags": [
         {
           "zh": "播客整理",
-          "en": "podcast curation"
+          "en": "Podcast Curation"
         },
         {
           "zh": "逐字稿编辑",
-          "en": "transcript editing"
+          "en": "Transcript Editing"
         },
         {
-          "zh": "长文归档",
-          "en": "long-form archiving"
+          "zh": "多格式发布",
+          "en": "Multi-format Publishing"
         }
       ],
       "quickPrompts": [
         {
-          "zh": "把这期音频转成可读逐字稿，并保留说话人和时间线",
-          "en": "Turn this audio into a readable transcript with speakers and timestamps."
+          "zh": "请把这个视频或播客整理成可阅读的中文逐字稿，并生成配套交付文件。",
+          "en": "Please turn this video or podcast into a readable Chinese transcript with supporting deliverables."
         },
         {
-          "zh": "先判断输入来源是否可直接处理，再说明缺什么",
-          "en": "Check the source first, then tell me whether it can be processed and what is missing."
+          "zh": "请检查这个网页里的音视频来源，优先获取字幕，无法获取时再转录。",
+          "en": "Please inspect the media source on this webpage, fetch subtitles first, and transcribe only if needed."
         },
         {
-          "zh": "基于逐字稿继续生成适合网页、PDF 和 EPUB 的版本",
-          "en": "From the transcript, generate versions for web, PDF, and EPUB."
+          "zh": "请把这期播客归档入账，并同步维护后续待处理节目 backlog。",
+          "en": "Please archive this podcast episode and update the backlog for future candidate episodes."
         }
       ]
     },

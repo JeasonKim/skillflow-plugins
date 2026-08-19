@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "wf-mr8ndejse6c1b9ca": {
+    "sonic-archive-builder-dashboard": {
       "command": "node",
       "args": [
         "./mcp/server.bundle.mjs"

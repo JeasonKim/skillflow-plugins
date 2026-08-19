@@ -3,10 +3,10 @@
   "displayName": "一起共建声波档案",
   "shortDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
   "longDescription": "把值得反复听的声音，变成可以慢慢读的文字；持续整理科技、创业与 AI 播客。",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "monetizationMode": "free",
   "apiBase": "http://localhost:3000",
-  "skillFlowVersionId": "83522741172438016",
+  "skillFlowVersionId": "83523499649401856",
   "brandColor": "#2563EB",
   "logoPath": "/plugin-assets/logo.png",
   "profileEndpoint": "/creator-commission/profiles/1"
